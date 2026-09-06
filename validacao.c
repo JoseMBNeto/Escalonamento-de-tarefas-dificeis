@@ -116,3 +116,92 @@ int lerLinhaTarefa (const char *linha, char *nomeSaida, char *periodoTexto, char
 
     return 0;
 }
+
+Tarefa *lerTarefas (FILE *arquivo, int *quantidadeSaida, int *linhaErroSaida){
+    int capacidade = 4;
+    int quantidade = 0;
+    Tarefa *tarefas = malloc (capacidade * sizeof(Tarefa));
+
+    if (tarefas == NULL){
+        *linhaErroSaida = -1;
+        return NULL;
+    }
+
+    char *linha = NULL;
+    size_t tamanhoBuffer = 0;
+    int numeroLinha = 2;
+
+    while (getline(&linha, &tamanhoBuffer, arquivo) != -1){
+        size_t tamanho = strlen(linha);
+        if (tamanho > 0 && linha[tamanho - 1] == '\n'){
+            linha[tamanho - 1] = '\0';
+        }
+
+        if (linha[0] == '\0'){
+            numeroLinha++;
+            continue;
+        }
+
+        char nomeTexto[NOME_MAX];
+        char periodoTexto[NOME_MAX];
+        char deadlineTexto[NOME_MAX];
+        char burstTexto[NOME_MAX];
+
+        if (lerLinhaTarefa(linha, nomeTexto, periodoTexto, deadlineTexto, burstTexto) != 0){
+            *linhaErroSaida = numeroLinha;
+            free(linha);
+            free(tarefas);
+            return NULL;
+        }
+
+        long periodo, deadline, burst;
+
+        if (validarNumerico(periodoTexto, &periodo) != 0 || validarNumerico(deadlineTexto, &deadline) != 0 || validarNumerico(burstTexto, &burst) != 0){
+            *linhaErroSaida = numeroLinha;
+            free(linha);
+            free(tarefas);
+            return NULL;
+        }
+
+        if (validaPositivo(periodo) != 0 || validaPositivo(deadline) != 0 || validaPositivo(burst) != 0){
+            *linhaErroSaida = numeroLinha;
+            free(linha);
+            free(tarefas);
+            return NULL;
+        }
+
+        if (validaCDP(burst, deadline, periodo) != 0) {
+            *linhaErroSaida = numeroLinha;
+            free(linha);
+            free(tarefas);
+            return NULL;
+        }
+
+        if (quantidade == capacidade) {
+            capacidade *= 2;
+            Tarefa *novo = realloc(tarefas, capacidade * sizeof(Tarefa));
+            if (novo == NULL) {
+                *linhaErroSaida = -1;
+                free(linha);
+                free(tarefas);
+                return NULL;
+            }
+            tarefas = novo;
+        }
+
+        strncpy(tarefas[quantidade].nome, nomeTexto, NOME_MAX - 1);
+        tarefas[quantidade].nome[NOME_MAX - 1] = '\0';
+        tarefas[quantidade].periodo = periodo;
+        tarefas[quantidade].deadline = deadline;
+        tarefas[quantidade].burst = burst;
+
+        quantidade++;
+        numeroLinha++;
+    }
+    
+    free(linha);
+
+    *quantidadeSaida = quantidade;
+    *linhaErroSaida = -1;
+    return tarefas;
+}
