@@ -11,12 +11,7 @@ int validarArgumentos (int argc, char *argv[]){
         return 1;
     }
 
-    if (strcmp(argv[1], "rate") != 0){
-        fprintf(stderr, "Erro: tarefa desconhecida\n");
-        return 1;
-    }
-
-    if (strcmp(argv[1], "edf") != 0){
+    if (strcmp(argv[1], "rate") != 0 && strcmp(argv[1], "edf") != 0){
         fprintf(stderr, "Erro: tarefa desconhecida\n");
         return 1;
     }
