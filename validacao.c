@@ -21,7 +21,6 @@ int validarArgumentos (int argc, char *argv[]){
 
 int validaPositivo (long valor){
     if (valor <= 0){
-        fprintf(stderr, "Valor digitado nao e positivo\n");
         return 1;
     }
 
@@ -96,6 +95,7 @@ int lerTempoTotal (FILE *arquivo, long *tempoTotal){
     }
 
     if (validaPositivo(*tempoTotal) != 0){
+        fprintf(stderr, "Valor digitado nao e positivo\n");
         return 1;
     }
 
@@ -103,7 +103,7 @@ int lerTempoTotal (FILE *arquivo, long *tempoTotal){
 }
 
 int lerLinhaTarefa (const char *linha, char *nomeSaida, char *periodoTexto, char *deadlineTexto, char *burstTexto){
-    int campos = sscanf(linha , "%s63 %s63 %s63 %s63", nomeSaida, periodoTexto, deadlineTexto, burstTexto);
+    int campos = sscanf(linha , "%63s %63s %63s %63s", nomeSaida, periodoTexto, deadlineTexto, burstTexto);
 
     if (campos != 4){
         return 1;
@@ -159,6 +159,7 @@ Tarefa *lerTarefas (FILE *arquivo, int *quantidadeSaida, int *linhaErroSaida){
         }
 
         if (validaPositivo(periodo) != 0 || validaPositivo(deadline) != 0 || validaPositivo(burst) != 0){
+            fprintf(stderr, "Valor digitado nao e positivo\n");
             *linhaErroSaida = numeroLinha;
             free(linha);
             free(tarefas);
