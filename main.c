@@ -15,15 +15,23 @@ int main(int argc, char *argv[]) {
 
     long tempoTotal;
     if (lerTempoTotal(arquivo, &tempoTotal) != 0){
-        fprintf(stderr, "Tempo total do arquivo invalido\n");
         fclose(arquivo);
         return 1;
     }
 
-    int quantidade;
-    int linhaErro;
+    int quantidade = 0;
+    int linhaErro = 0;
     Tarefa *tarefas = lerTarefas(arquivo, &quantidade, &linhaErro);
     fclose(arquivo);
+
+    if (tarefas == NULL){
+        if (linhaErro == -1){
+            fprintf(stderr, "Erro: falhou ao alocar memoria\n");
+        }else{
+            fprintf(stderr, "Erro: linha %d invalida\n", linhaErro);
+        }
+        return 1;
+    }
 
     printf("Algoritmo: %s\n", argv[1]);
     printf("Tempo total: %ld\n", tempoTotal);

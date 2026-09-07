@@ -1,0 +1,32 @@
+Script started on 2026-09-07 13:45:11-03:00 [COMMAND="date; whoami; pwd; bash" TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="168" LINES="20"]
+Mon Sep  7 13:45:11 -03 2026
+miltonlnx
+/home/miltonlnx/Infra-SFT/jmbn
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ make ch[K[Kscheduler 
+[?2004lmake[1]: Entering directory '/home/miltonlnx/Infra-SFT/jmbn'
+gcc -c main.c
+gcc -c validacao.c
+gcc main.o validacao.o -o scheduler
+make[1]: Leaving directory '/home/miltonlnx/Infra-SFT/jmbn'
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler rate voo.txt
+[?2004lAlgoritmo: rate
+Tempo total: 100
+Tarefas carregadas: 0
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler rate voo.txt[Kcdp.txt 
+[?2004lAlgoritmo: rate
+Tempo total: 60
+Tarefas carregadas: 0
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler rate cdp.txt [Kerro1.txt 
+[?2004lTempo total do arquivo invalido
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler rate erro1.txt [Kfaltacampo.txt 
+[?2004lAlgoritmo: rate
+Tempo total: 100
+Tarefas carregadas: 0
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler rate faltacampo.txt [Knegativo.txt 
+[?2004lAlgoritmo: rate
+Tempo total: 100
+Tarefas carregadas: 0
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ exit
+[?2004lexit
+
+Script done on 2026-09-07 13:46:03-03:00 [COMMAND_EXIT_CODE="0"]
