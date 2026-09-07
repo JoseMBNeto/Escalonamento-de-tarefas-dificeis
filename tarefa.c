@@ -11,3 +11,17 @@ void inicializarSimulacao (Tarefa *tarefas, int quantidade){
         tarefas[i].killed = 0;
     }
 }
+
+int precisaNovaInstancia(long instanteAtual, long periodo){
+    if (instanteAtual % periodo == 0){
+        return 1;
+    }
+    return 0;
+}
+
+void novaInstancia(Tarefa *tarefa, long instanteAtual){
+    tarefa->chegadaAtual = instanteAtual;
+    tarefa->deadlineAbs = instanteAtual + tarefa->deadline;
+    tarefa->burstRestante = tarefa->burst;
+    tarefa->ativa = 1;
+}
