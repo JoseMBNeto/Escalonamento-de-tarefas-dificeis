@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "validacao.h"
+#include "tarefa.h"
 
 int main(int argc, char *argv[]) {
     if (validarArgumentos(argc, argv) != 0){
@@ -32,6 +33,8 @@ int main(int argc, char *argv[]) {
         }
         return 1;
     }
+
+    inicializarSimulacao(tarefas, quantidade);
 
     printf("Algoritmo: %s\n", argv[1]);
     printf("Tempo total: %ld\n", tempoTotal);
