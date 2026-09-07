@@ -20,5 +20,7 @@ typedef struct Tarefa {
 }Tarefa;
 
 void inicializarSimulacao (Tarefa *tarefas, int quantidade);
+int precisaNovaInstancia(long instanteAtual, long periodo);
+void novaInstancia(Tarefa *tarefa, long instanteAtual);
 
 #endif
