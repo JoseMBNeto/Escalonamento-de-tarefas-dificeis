@@ -15,7 +15,6 @@ int main(int argc, char *argv[]) {
 
     long tempoTotal;
     if (lerTempoTotal(arquivo, &tempoTotal) != 0){
-        fprintf(stderr, "Tempo total do arquivo invalido\n");
         fclose(arquivo);
         return 1;
     }
