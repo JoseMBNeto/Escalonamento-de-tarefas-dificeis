@@ -27,7 +27,7 @@ void Resultado (const char *algoritmo, Tarefa *tarefas, int quantidade, TrechoEx
         fprintf(saida, "[%s] %d\n", tarefas[i].nome, tarefas[i].perdidas);
     }
 
-    fprintf(saida, "\nCOMLETE EXECUTION\n");
+    fprintf(saida, "\nCOMPLETE EXECUTION\n");
     for (int i = 0; i < quantidade; i++){
         fprintf(saida, "[%s] %d\n", tarefas[i].nome, tarefas[i].completadas);
     }
@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
     char nomeArquivo [64];
     sprintf(nomeArquivo, "%s_%s.out", argv[1], LOGIN);
 
-    FILE *saida = fopen(arquivo, "w");
+    FILE *saida = fopen(nomeArquivo, "w");
     if (saida == NULL){
         fprintf(stderr, "Erro: nao foi possivel criar o arquivo '%s'\n", nomeArquivo);
         free(trechos);
