@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define NOME_MAX 64
 
 typedef struct Tarefa {
@@ -22,5 +23,7 @@ typedef struct Tarefa {
 void inicializarSimulacao (Tarefa *tarefas, int quantidade);
 int precisaNovaInstancia(long instanteAtual, long periodo);
 void novaInstancia(Tarefa *tarefa, long instanteAtual);
+int escolherProximaTarefa(Tarefa *tarefas, int quantidade, const char *algoritmo);
+void detectarPerdaDeadline (Tarefa *tarefas, int quantidade, long instanteAtual);
 
 #endif
