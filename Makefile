@@ -1,5 +1,8 @@
-scheduler: main.o validacao.o tarefa.o
-	gcc main.o validacao.o tarefa.o -o scheduler
+scheduler: main.o validacao.o tarefa.o execucao.o
+	gcc main.o validacao.o tarefa.o execucao.o -o scheduler
+
+execucao.o: execucao.c execucao.h
+	gcc -c execucao.c
 
 main.o: main.c
 	gcc -c main.c
