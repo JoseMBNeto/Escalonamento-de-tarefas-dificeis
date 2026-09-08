@@ -56,7 +56,7 @@ int escolherProximaTarefa(Tarefa *tarefas, int quantidade, const char *algoritmo
 
 void detectarPerdaDeadline (Tarefa *tarefas, int quantidade, long instanteAtual){
     for (int i = 0; i < quantidade; i++){
-        if (tarefas[i].ativa && instanteAtual >= tarefas[i].deadlineAbs);{
+        if (tarefas[i].ativa && instanteAtual >= tarefas[i].deadlineAbs){
             tarefas[i].perdidas++;
             tarefas[i].ativa = 0;
         }
