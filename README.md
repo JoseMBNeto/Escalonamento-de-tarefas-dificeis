@@ -22,4 +22,5 @@ make log - Roda o scrip para atualizar o evidencias.log
 ### Compilando o projeto:
 
 #### Digite make scheduler
-#### ./scheduler
+#### ./scheduler rate arquivo.txt
+#### ./scheduler edf arquivo.txt

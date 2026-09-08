@@ -85,3 +85,76 @@ apos 3 exec: burstRestante=0 ativa=0 completadas=1
 [?2004lexit
 
 Script done on 2026-09-07 21:28:12-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-09-08 16:35:50-03:00 [COMMAND="date; whoami; pwd; bash" TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="168" LINES="20"]
+Tue Sep  8 16:35:50 -03 2026
+miltonlnx
+/home/miltonlnx/Infra-SFT/jmbn
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ make e[Kscheduler 
+[?2004lmake[1]: Entering directory '/home/miltonlnx/Infra-SFT/jmbn'
+gcc -c main.c
+gcc -c validacao.c
+gcc -c tarefa.c
+gcc -c execucao.c
+gcc main.o validacao.o tarefa.o execucao.o -o scheduler
+make[1]: Leaving directory '/home/miltonlnx/Infra-SFT/jmbn'
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler rate voo.txt 
+[?2004l[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ cat rate_jmbn.out 
+[?2004lEXECUTION BY RATE
+[ATT] for 8 units - F
+[NAV] for 12 units - H
+[ATT] for 8 units - F
+[NAV] for 2 units - L
+idle for 10 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 5 units - F
+idle for 7 units
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 1
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 1
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler e
+evidencias.log  execucao.c      execucao.h      execucao.o      
+]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ ./scheduler edf voo.txt 
+[?2004l[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ cat edf_jmbn.out 
+[?2004lEXECUTION BY EDF
+[ATT] for 8 units - F
+[NAV] for 15 units - F
+[ATT] for 8 units - F
+idle for 9 units
+[ATT] for 8 units - F
+idle for 2 units
+[NAV] for 10 units - H
+[ATT] for 8 units - F
+[NAV] for 5 units - F
+idle for 7 units
+[ATT] for 8 units - F
+idle for 12 units
+
+LOST DEADLINES
+[ATT] 0
+[NAV] 0
+
+COMPLETE EXECUTION
+[ATT] 5
+[NAV] 2
+
+KILLED
+[ATT] 0
+[NAV] 0
+[?2004h]0;miltonlnx@Miltoneto: ~/Infra-SFT/jmbn[01;32mmiltonlnx@Miltoneto[00m:[01;34m~/Infra-SFT/jmbn[00m$ exit
+[?2004lexit
+
+Script done on 2026-09-08 16:36:41-03:00 [COMMAND_EXIT_CODE="0"]
