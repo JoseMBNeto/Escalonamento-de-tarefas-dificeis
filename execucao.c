@@ -53,3 +53,31 @@ TrechoExecucao *processarInstanteLog(TrechoExecucao *trechos, int *quantidadeTre
     *duracaoAtual = 1;
     return trechos;
 }
+
+TrechoExecucao *fecharUltimoTrecho(TrechoExecucao *trechos, int *quantidadeTrechos, int *capacidadeTrechos, int indiceAnterior, int duracaoAtual, Tarefa *tarefas){
+    if (indiceAnterior == -2 || duracaoAtual <= 0){
+        return trechos;
+    }
+
+    if (*quantidadeTrechos == *capacidadeTrechos){
+        int novaCapacidade;
+        if (*capacidadeTrechos == 0){
+            novaCapacidade = 4;
+        }else{
+            novaCapacidade = *capacidadeTrechos * 2;
+        }
+
+        TrechoExecucao *novo = realloc(trechos, novaCapacidade * sizeof(TrechoExecucao));
+        if (novo == NULL){
+            return NULL;
+        }
+        trechos = novo;
+        *capacidadeTrechos = novaCapacidade;
+    }
+
+    trechos[*quantidadeTrechos].indiceTarefa = indiceAnterior;
+    trechos[*quantidadeTrechos].duracao = duracaoAtual;
+    trechos[*quantidadeTrechos].letra = determinarLetra(tarefas, indiceAnterior);
+    (*quantidadeTrechos)++;
+    return trechos;
+}
