@@ -62,3 +62,15 @@ void detectarPerdaDeadline (Tarefa *tarefas, int quantidade, long instanteAtual)
         }
     }
 }
+
+void executarTarefa (Tarefa *tarefas, int indice){
+    if (indice == -1){
+        return;
+    }
+    tarefas[indice].burstRestante--;
+
+    if (tarefas[indice].burstRestante == 0){
+        tarefas[indice].completadas++;
+        tarefas[indice].ativa = 0;
+    }
+}

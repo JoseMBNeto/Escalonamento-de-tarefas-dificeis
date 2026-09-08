@@ -25,5 +25,6 @@ int precisaNovaInstancia(long instanteAtual, long periodo);
 void novaInstancia(Tarefa *tarefa, long instanteAtual);
 int escolherProximaTarefa(Tarefa *tarefas, int quantidade, const char *algoritmo);
 void detectarPerdaDeadline (Tarefa *tarefas, int quantidade, long instanteAtual);
+void executarTarefa (Tarefa *tarefas, int indice);
 
 #endif
